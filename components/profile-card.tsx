@@ -13,8 +13,8 @@ export function ProfileCard() {
           transition={{ delay: 0.3 }}
           className="flex-shrink-0 md:w-48 h-48 relative border-4 border-cyan-500/50 rounded-lg overflow-hidden"
         >
-          {/* Using a placeholder image - replace with actual profile photo */}
-          <Image src="/Image1.png" alt="Emmanuel Damilare" fill className="object-cover" />
+          {/* Profile Image Placeholder - replace with Emmanuel’s real photo */}
+          <Image src="/Image1.png" alt="Emmanuel Adegbite" fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/60 to-transparent"></div>
         </motion.div>
 
@@ -25,34 +25,43 @@ export function ProfileCard() {
           className="flex-1"
         >
           <h1 className="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-            Emmanuel Damilare
+            Emmanuel Adegbite
           </h1>
           <h2 className="text-xl font-mono border-b border-gray-700 pb-2 mb-3">
-            <span className="text-cyan-400">CyberSecurity</span>
+            <span className="text-cyan-400">Cybersecurity</span>
             <span className="text-purple-400"> Analyst</span>
-            <span className="text-xs ml-2 text-green-400 animate-pulse">v2.0</span>
+            <span className="text-xs ml-2 text-green-400 animate-pulse">v2.5</span>
           </h2>
 
           <div className="space-y-2 text-sm font-mono">
             <div className="flex items-start">
               <span className="text-cyan-400 mr-2">{">"}</span>
               <p>
-               Cybersecurity professional with expertise in penetration testing, offensive and defensive security, Active Directory hardening, and cloud security. I design and execute hands-on projects simulating real-world attack and defense scenarios, building custom tools and automating workflows with Python and Bash.
+                Motivated IT professional with hands-on experience in security operations, 
+                network defence, penetration testing, and incident response. Skilled in 
+                translating technical knowledge into practical solutions and user-friendly support.
               </p>
             </div>
             <div className="flex items-start">
               <span className="text-purple-400 mr-2">{">"}</span>
               <p>
-                Currently focused on leveraging advanced TTPs and cloud threat intelligence to strengthen enterprise security operations. Passionate about bridging strategy and technical execution, contributing to red/blue team engagements, and advancing secure cloud environments.
+                Adept in SIEM (Splunk & ELK), cloud security (AWS & Azure), Active Directory, 
+                firewall configuration, and Python scripting. Passionate about securing systems, 
+                automating workflows, and bridging technical expertise with customer interaction.
               </p>
             </div>
           </div>
 
-
-
-
           <div className="mt-4 flex flex-wrap gap-2">
-            {["Penetration Testing", "Offensive Security", "Python Automation", "Threat Intelligence", "Incident Response"].map((tag, i) => (
+            {[
+              "Penetration Testing",
+              "Incident Response",
+              "SIEM (Splunk/ELK)",
+              "Cloud Security",
+              "Firewall Configuration",
+              "Python Automation",
+              "Customer Service"
+            ].map((tag, i) => (
               <span
                 key={i}
                 className="inline-block px-2 py-1 text-xs font-mono bg-gray-800 border border-gray-700 rounded"
@@ -78,16 +87,28 @@ export function ProfileCard() {
           <div className="text-xs font-mono">
             <div className="flex items-start mb-1">
               <span className="text-cyan-400 mr-2 inline-block w-20">Location:</span>
-              <span>Scotland, United Kingdom</span>
+              <span>United Kingdom</span>
             </div>
             <div className="flex items-start mb-1">
               <span className="text-cyan-400 mr-2 inline-block w-20">Languages:</span>
-              <span>English</span>
+              <span>English (Native), French (Basic)</span>
+            </div>
+            <div className="flex items-start mb-1">
+              <span className="text-cyan-400 mr-2 inline-block w-20">GitHub:</span>
+              <a href="https://github.com/cybernuel" target="_blank" className="text-blue-400 hover:underline">
+                github.com/cybernuel
+              </a>
+            </div>
+            <div className="flex items-start mb-1">
+              <span className="text-cyan-400 mr-2 inline-block w-20">LinkedIn:</span>
+              <a href="https://linkedin.com/in/thedamilare" target="_blank" className="text-blue-400 hover:underline">
+                linkedin.com/in/thedamilare
+              </a>
             </div>
             <div className="flex items-start">
               <span className="text-cyan-400 mr-2 inline-block w-20">OS Version:</span>
               <span>
-                CyberSecurity OS 2.0.24 <span className="text-green-400">[STABLE]</span>
+                CyberSec OS 2.0.25 <span className="text-green-400">[STABLE]</span>
               </span>
             </div>
           </div>
