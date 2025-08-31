@@ -27,15 +27,24 @@ export function AboutSection() {
     },
   }
 
+  // Pulled from CV "Skills" section
   const skills = [
-    "Cybersecurity Analysis",
     "Penetration Testing",
-    "Network Security",
-    "SIEM & Incident Response",
-    "Threat Hunting",
-    "Python Scripting",
+    "Incident Response",
+    "SIEM (Splunk, ELK)",
+    "Firewall Configuration",
     "Vulnerability Assessment",
-    "SOC Operations",
+    "Snort IDS",
+    "AWS & Azure Security",
+    "MFA & Data Encryption",
+    "VPN & Cisco Routers",
+    "DDoS Mitigation",
+    "Wireshark Packet Analysis",
+    "Python Scripting",
+    "Desktop Support (Windows)",
+    "Customer Service",
+    "Team Collaboration",
+    "Clear Technical Communication",
   ]
 
   return (
@@ -50,21 +59,29 @@ export function AboutSection() {
           className="space-y-8"
         >
           <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tighter">
-            Sobre <span className="text-fuchsia-500">mí</span>
+            About <span className="text-fuchsia-500">Me</span>
           </motion.h2>
 
           <motion.div variants={itemVariants} className="space-y-4 text-gray-300 text-lg">
             <p>
-              Cybersecurity Analyst with hands-on experience in network security, penetration testing, and incident response. I combine technical expertise with strong communication skills to secure systems and educate users.
+              Motivated and versatile IT professional with a strong foundation in cybersecurity and hands-on experience in
+              security operations. Skilled in network defence, threat detection, and incident response, complemented by
+              frontline expertise in customer support.
             </p>
             <p>
-              Passionate about protecting digital assets, discovering vulnerabilities, and applying innovative security solutions. I thrive in dynamic environments where cybersecurity intersects with problem-solving and collaboration.
+              Adept at translating technical knowledge into user-friendly support with excellent communication and
+              problem-solving skills. Experienced in penetration testing, SIEM tools, and implementing secure network
+              architectures. Eager to contribute to IT support, desktop support, or cybersecurity roles that bridge technical
+              expertise with customer interaction.
             </p>
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
             {skills.map((skill, index) => (
-              <Badge key={index} className="bg-white/10 hover:bg-white/20 text-white border-none py-1.5 px-3 text-sm">
+              <Badge
+                key={index}
+                className="bg-white/10 hover:bg-white/20 text-white border-none py-1.5 px-3 text-sm"
+              >
                 {skill}
               </Badge>
             ))}
@@ -93,7 +110,7 @@ export function AboutSection() {
                   </div>
                 </motion.div>
 
-                {skills.map((skill, index) => (
+                {skills.map((_, index) => (
                   <motion.div
                     key={index}
                     animate={{
