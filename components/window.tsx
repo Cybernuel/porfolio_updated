@@ -24,25 +24,25 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   useEffect(() => {
     switch (id) {
       case "profile":
-        setPosition({ x: 20, y: 20 })
+        setPosition({ x: 0, y: 20 })
         break
       case "skills":
-        setPosition({ x: 40, y: 40 })
+        setPosition({ x: 0, y: 40 })
         break
       case "experience":
-        setPosition({ x: 60, y: 60 })
+        setPosition({ x: 0, y: 60 })
         break
       case "projects":
-        setPosition({ x: 80, y: 80 })
+        setPosition({ x: 0, y: 80 })
         break
       case "contact":
-        setPosition({ x: 100, y: 100 })
+        setPosition({ x: 0, y: 100 })
         break
       case "terminal":
-        setPosition({ x: 120, y: 120 })
+        setPosition({ x: 0, y: 120 })
         break
       default:
-        setPosition({ x: 20, y: 20 })
+        setPosition({ x: 0, y: 20 })
     }
   }, [id])
 
@@ -96,17 +96,17 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
 function getWindowWidth(id: string): string {
   switch (id) {
     case "profile":
-      return "min(500px, 70vw)"
+      return "min(500px, 90vw)"
     case "skills":
-      return "min(550px, 70vw)"
+      return "min(550px, 90vw)"
     case "experience":
-      return "min(550px, 70vw)"
+      return "min(550px, 90vw)"
     case "projects":
-      return "min(550px, 70vw)"
+      return "min(550px, 90vw)"
     case "contact":
-      return "min(400px, 70vw)"
+      return "min(400px, 90vw)"
     case "terminal":
-      return "min(480px, 70vw)"
+      return "min(480px, 90vw)"
     default:
       return "400px"
   }
