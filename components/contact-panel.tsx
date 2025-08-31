@@ -107,7 +107,7 @@ export function ContactPanel({ onNotify }: ContactPanelProps) {
           <div className="bg-black/30 border border-gray-700 rounded p-4">
             <h3 className="text-sm font-mono mb-3 text-cyan-400">// LOCATION</h3>
             <div className="text-sm">
-              <p className="mb-2">Scotland, United Kingdom</p>
+              <p className="mb-2">United Kingdom</p>
               <p className="text-gray-400">Open to remote opportunities worldwide</p>
             </div>
           </div>
