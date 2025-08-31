@@ -9,7 +9,7 @@ export function ExperiencePanel() {
   const experiences = [
     {
       title: "Customer Service Representative",
-      company: "William Hill, Edinburgh, UK",
+      company: "William Hill, UK",
       period: "Aug 2024 – Present",
       description: [
         "Deliver prompt and accurate support across live chat, phone, and email channels.",
