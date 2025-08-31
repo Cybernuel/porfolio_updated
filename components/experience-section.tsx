@@ -12,7 +12,7 @@ export function ExperienceSection() {
   const experiences = [
     {
       title: "Customer Service Representative",
-      company: "William Hill, Edinburgh, UK",
+      company: "William Hill, UK",
       period: "Aug 2024 – Present",
       description: [
         "Delivered prompt support across chat, phone, and email, resolving account and betting issues.",
