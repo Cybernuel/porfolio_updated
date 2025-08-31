@@ -1,10 +1,8 @@
 "use client"
 
 import type React from "react"
-
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import { motion } from "framer-motion"
-import Draggable from "react-draggable"
 
 interface WindowProps {
   id: string
@@ -16,111 +14,211 @@ interface WindowProps {
   onFocus: () => void
 }
 
+function getInitialPosition(id: string) {
+  switch (id) {
+    case "profile":
+      return { x: 0, y: 20 }
+    case "skills":
+      return { x: 0, y: 40 }
+    case "experience":
+      return { x: 0, y: 60 }
+    case "projects":
+      return { x: 0, y: 80 }
+    case "contact":
+      return { x: 0, y: 100 }
+    case "terminal":
+      return { x: 0, y: 120 }
+    default:
+      return { x: 0, y: 20 }
+  }
+}
+
 export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }: WindowProps) {
   const [isMinimized, setIsMinimized] = useState(false)
-  const [position, setPosition] = useState({ x: 50, y: 20 })
-  const nodeRef = useRef(null)
+  const [position, setPosition] = useState(() => getInitialPosition(id))
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
+  const windowRef = useRef<HTMLDivElement>(null)
 
-  // Set initial spawn position on the LEFT side
+  const handleDragStart = useCallback(
+    (clientX: number, clientY: number) => {
+      setIsDragging(true)
+      setDragStart({
+        x: clientX - position.x,
+        y: clientY - position.y,
+      })
+      onFocus()
+    },
+    [position.x, position.y, onFocus],
+  )
+
+  const handleDragMove = useCallback(
+    (clientX: number, clientY: number) => {
+      if (!isDragging) return
+
+      const newX = clientX - dragStart.x
+      const newY = clientY - dragStart.y
+
+      // Keep window within viewport bounds
+      const maxX = window.innerWidth - 400 // Approximate window width
+      const maxY = window.innerHeight - 200 // Approximate window height
+
+      setPosition({
+        x: Math.max(0, Math.min(newX, maxX)),
+        y: Math.max(0, Math.min(newY, maxY)),
+      })
+    },
+    [isDragging, dragStart.x, dragStart.y],
+  )
+
+  const handleDragEnd = useCallback(() => {
+    setIsDragging(false)
+  }, [])
+
+  // Mouse events
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest(".window-controls")) return
+    e.preventDefault()
+    handleDragStart(e.clientX, e.clientY)
+  }
+
+  // Touch events for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if ((e.target as HTMLElement).closest(".window-controls")) return
+    e.preventDefault()
+    const touch = e.touches[0]
+    handleDragStart(touch.clientX, touch.clientY)
+  }
+
+  // Global event listeners for drag
   useEffect(() => {
-    switch (id) {
-      case "profile":
-        setPosition({ x: 50, y: 20 })
-        break
-      case "skills":
-        setPosition({ x: 70, y: 60 })
-        break
-      case "experience":
-        setPosition({ x: 90, y: 100 })
-        break
-      case "projects":
-        setPosition({ x: 110, y: 140 })
-        break
-      case "contact":
-        setPosition({ x: 130, y: 180 })
-        break
-      case "terminal":
-        setPosition({ x: 150, y: 220 })
-        break
-      default:
-        setPosition({ x: 50, y: 50 })
+    if (!isDragging) return
+
+    const handleMouseMove = (e: MouseEvent) => {
+      handleDragMove(e.clientX, e.clientY)
     }
-  }, [id])
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
+      const touch = e.touches[0]
+      handleDragMove(touch.clientX, touch.clientY)
+    }
+
+    const handleMouseUp = () => {
+      handleDragEnd()
+    }
+
+    const handleTouchEnd = () => {
+      handleDragEnd()
+    }
+
+    document.addEventListener("mousemove", handleMouseMove)
+    document.addEventListener("mouseup", handleMouseUp)
+    document.addEventListener("touchmove", handleTouchMove, { passive: false })
+    document.addEventListener("touchend", handleTouchEnd)
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove)
+      document.removeEventListener("mouseup", handleMouseUp)
+      document.removeEventListener("touchmove", handleTouchMove)
+      document.removeEventListener("touchend", handleTouchEnd)
+    }
+  }, [isDragging, handleDragMove, handleDragEnd])
 
   if (!isOpen) return null
   if (isMinimized) return null
 
   return (
-    <Draggable
-      nodeRef={nodeRef}
-      handle=".window-header"
-      position={position} // controlled position
-      onStop={(_, data) => setPosition({ x: data.x, y: data.y })} // update after drag
-      onStart={onFocus}
-      bounds="parent"
+    <motion.div
+      ref={windowRef}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.2 }}
+      className="absolute bg-gray-800 border-2 border-gray-700 rounded shadow-lg overflow-hidden focus:outline-none"
+      style={{
+        width: getWindowWidth(id),
+        height: getWindowHeight(id),
+        zIndex,
+        transform: `translate(${position.x}px, ${position.y}px)`,
+        cursor: isDragging ? "grabbing" : "default",
+      }}
+      onClick={onFocus}
+      tabIndex={0}
     >
-      <motion.div
-        ref={nodeRef}
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.2 }}
-        className="absolute bg-gray-800 border-2 border-gray-700 rounded shadow-lg overflow-hidden focus:outline-none"
-        style={{
-          width: getWindowWidth(id),
-          height: getWindowHeight(id),
-          zIndex,
-        }}
-        onClick={onFocus}
-        tabIndex={0}
+      <div
+        className="window-header flex items-center justify-between bg-gradient-to-r from-gray-700 to-gray-800 px-2 py-1 cursor-grab active:cursor-grabbing select-none"
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
-        <div className="window-header flex items-center justify-between bg-gradient-to-r from-gray-700 to-gray-800 px-2 py-1 cursor-move">
-          <div className="flex items-center gap-1.5">
-            <div
-              className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer"
-              onClick={onClose}
-            ></div>
-            <div
-              className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 cursor-pointer"
-              onClick={() => setIsMinimized(true)}
-            ></div>
-            <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 cursor-pointer"></div>
-          </div>
-          <div className="text-xs font-mono text-gray-300 mx-auto">{title}</div>
-          <div className="w-4"></div> {/* Spacer */}
+        <div className="window-controls flex items-center gap-1.5">
+          <button
+            className="w-5 h-5 md:w-3 md:h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer touch-manipulation flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              onClose()
+            }}
+            onTouchStart={(e) => {
+              e.stopPropagation()
+            }}
+            onTouchEnd={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              onClose()
+            }}
+          />
+          <button
+            className="w-5 h-5 md:w-3 md:h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 cursor-pointer touch-manipulation flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              setIsMinimized(true)
+            }}
+            onTouchStart={(e) => {
+              e.stopPropagation()
+            }}
+            onTouchEnd={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              setIsMinimized(true)
+            }}
+          />
+          <div className="w-5 h-5 md:w-3 md:h-3 rounded-full bg-green-500 hover:bg-green-600 cursor-pointer flex items-center justify-center"></div>
         </div>
+        <div className="text-xs font-mono text-gray-300 mx-auto pointer-events-none">{title}</div>
+        <div className="w-4"></div>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="window-content p-3 bg-gray-900 overflow-auto"
-          style={{ height: "calc(100% - 26px)" }}
-        >
-          {children}
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="window-content p-3 bg-gray-900 overflow-auto"
+        style={{ height: "calc(100% - 26px)" }}
+      >
+        {children}
       </motion.div>
-    </Draggable>
+    </motion.div>
   )
 }
 
-// Helper functions
 function getWindowWidth(id: string): string {
   switch (id) {
     case "profile":
-      return "min(650px, 90vw)"
+      return "min(500px, 90vw)"
     case "skills":
-      return "min(700px, 90vw)"
+      return "min(550px, 90vw)"
     case "experience":
-      return "min(700px, 90vw)"
+      return "min(550px, 90vw)"
     case "projects":
-      return "min(700px, 90vw)"
+      return "min(550px, 90vw)"
     case "contact":
-      return "min(650px, 90vw)"
+      return "min(400px, 90vw)"
     case "terminal":
-      return "min(600px, 90vw)"
+      return "min(480px, 90vw)"
     default:
-      return "500px"
+      return "400px"
   }
 }
 
@@ -135,7 +233,7 @@ function getWindowHeight(id: string): string {
     case "projects":
       return "min(500px, 80vh)"
     case "contact":
-      return "min(500px, 80vh)"
+      return "min(400px, 80vh)"
     case "terminal":
       return "min(400px, 80vh)"
     default:
