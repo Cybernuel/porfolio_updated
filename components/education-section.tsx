@@ -9,10 +9,10 @@ export function EducationSection() {
 
   const education = [
     {
-      title: "Ingeniería en Informática",
-      institution: "UADE (Universidad Argentina de la Empresa)",
-      year: "2016 - 2020",
-      color: "from-fuchsia-500 to-purple-500",
+      title: "MSc Cybersecurity",
+      institution: "Edinburgh Napier University, UK",
+      year: "2024 – Present",
+      color: "from-blue-500 to-indigo-500",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,10 +32,10 @@ export function EducationSection() {
       ),
     },
     {
-      title: "Diseño UX/UI",
-      institution: "Coderhouse",
-      year: "2021",
-      color: "from-purple-500 to-violet-500",
+      title: "B.Eng Computer Engineering",
+      institution: "University of Ilorin, Nigeria",
+      year: "2014 – 2019",
+      color: "from-indigo-500 to-purple-500",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,10 +54,10 @@ export function EducationSection() {
       ),
     },
     {
-      title: "Node.js & Next.js",
-      institution: "Digital House",
-      year: "2022",
-      color: "from-violet-500 to-indigo-500",
+      title: "Certified in Cybersecurity (CC)",
+      institution: "ISC²",
+      year: "2024",
+      color: "from-purple-500 to-pink-500",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,20 +66,15 @@ export function EducationSection() {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       ),
     },
     {
-      title: "UX/UI Foundations",
-      institution: "Interaction Design Foundation",
-      year: "2023",
-      color: "from-indigo-500 to-blue-500",
+      title: "Google Cybersecurity Certificate",
+      institution: "Coursera / Google",
+      year: "2024",
+      color: "from-pink-500 to-red-500",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +115,7 @@ export function EducationSection() {
 
   return (
     <section id="education" className="min-h-screen flex items-center py-20 relative overflow-hidden bg-black">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(59,130,246,0.15),transparent_70%)]" />
 
       <div ref={ref} className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -133,7 +128,7 @@ export function EducationSection() {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold tracking-tighter mb-16 text-center"
           >
-            <span className="text-blue-500">Educación</span> y Formación
+            <span className="text-blue-500">Education</span> & Training
           </motion.h2>
 
           <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8">
