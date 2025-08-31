@@ -24,7 +24,7 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   useEffect(() => {
     switch (id) {
       case "profile":
-        setPosition({ x: 0, y: 20 })
+        setPosition({ x: 0, y: 120 })
         break
       case "skills":
         setPosition({ x: 0, y: 40 })
