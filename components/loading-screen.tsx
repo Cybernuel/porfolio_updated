@@ -22,7 +22,7 @@ export function LoadingScreen() {
         transition={{ delay: 0.5, duration: 0.5 }}
         className="text-white text-sm uppercase tracking-widest"
       >
-        Cargando experiencia
+        Loading experience
       </motion.div>
     </motion.div>
   )
