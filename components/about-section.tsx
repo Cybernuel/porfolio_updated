@@ -28,14 +28,14 @@ export function AboutSection() {
   }
 
   const skills = [
-    "Product Strategy",
-    "UX/UI",
-    "Agile",
-    "AI Innovation",
-    "Team Leadership",
-    "MVP Development",
-    "User Research",
-    "Roadmapping",
+    "Cybersecurity Analysis",
+    "Penetration Testing",
+    "Network Security",
+    "SIEM & Incident Response",
+    "Threat Hunting",
+    "Python Scripting",
+    "Vulnerability Assessment",
+    "SOC Operations",
   ]
 
   return (
@@ -55,14 +55,10 @@ export function AboutSection() {
 
           <motion.div variants={itemVariants} className="space-y-4 text-gray-300 text-lg">
             <p>
-              Product Manager con experiencia en desarrollo de productos digitales, estrategia, UX/UI y tecnología.
-              Lidero equipos multidisciplinarios a lo largo del ciclo completo de vida del producto, desde la
-              investigación hasta el lanzamiento.
+              Cybersecurity Analyst with hands-on experience in network security, penetration testing, and incident response. I combine technical expertise with strong communication skills to secure systems and educate users.
             </p>
             <p>
-              Actualmente enfocada en cómo la inteligencia artificial puede acelerar y potenciar el desarrollo de
-              productos más accesibles, escalables y con impacto. Defensora del trabajo abierto y la cultura de build in
-              public.
+              Passionate about protecting digital assets, discovering vulnerabilities, and applying innovative security solutions. I thrive in dynamic environments where cybersecurity intersects with problem-solving and collaboration.
             </p>
           </motion.div>
 
