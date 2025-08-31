@@ -67,10 +67,10 @@ export function ContactSection() {
   }
 
   const socialLinks = [
-    { icon: <Linkedin className="w-6 h-6" />, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: <Github className="w-6 h-6" />, href: "https://github.com", label: "GitHub" },
-    { icon: <Mail className="w-6 h-6" />, href: "mailto:vijulibe@gmail.com", label: "vijulibe@gmail.com" },
-    { icon: <Phone className="w-6 h-6" />, href: "tel:+5411390483411", label: "+54 11 3904 8341" },
+    { icon: <Linkedin className="w-6 h-6" />, href: "linkedin.com/in/thedamilare", label: "LinkedIn" },
+    { icon: <Github className="w-6 h-6" />, href: "https://github.com/Cybernuel", label: "GitHub" },
+    { icon: <Mail className="w-6 h-6" />, href: "mailto:macdarex@yahoo.com", label: "macdarex@yahoo.com" },
+    { icon: <Phone className="w-6 h-6" />, href: "tel:+447827192714", label: "+447827192714" },
   ]
 
   return (
