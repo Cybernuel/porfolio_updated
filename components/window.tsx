@@ -21,30 +21,27 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const nodeRef = useRef(null)
 
-  // Set initial position based on window ID to arrange them nicely
-  useEffect(() => {
+  // Helper to parse width string like "min(650px, 90vw)" into px number
+  const getNumericWidth = (id: string): number => {
     switch (id) {
-      case "profile":
-        setPosition({ x: 50, y: 20 })
-        break
-      case "skills":
-        setPosition({ x: 100, y: 40 })
-        break
-      case "experience":
-        setPosition({ x: 150, y: 60 })
-        break
-      case "projects":
-        setPosition({ x: 200, y: 80 })
-        break
-      case "contact":
-        setPosition({ x: 250, y: 100 })
-        break
-      case "terminal":
-        setPosition({ x: 300, y: 120 })
-        break
-      default:
-        setPosition({ x: 0, y: 0 })
+      case "profile": return 650
+      case "skills": return 700
+      case "experience": return 700
+      case "projects": return 700
+      case "contact": return 650
+      case "terminal": return 600
+      default: return 500
     }
+  }
+
+  // Set initial position based on window ID (now aligned to the right side)
+  useEffect(() => {
+    const screenWidth = window.innerWidth
+    const baseY = { profile: 20, skills: 40, experience: 60, projects: 80, contact: 100, terminal: 120 } as Record<string, number>
+    const windowWidth = getNumericWidth(id)
+    const offsetX = screenWidth - windowWidth - 50 // 50px padding from right edge
+
+    setPosition({ x: offsetX, y: baseY[id] ?? 0 })
   }, [id])
 
   if (!isOpen) return null
