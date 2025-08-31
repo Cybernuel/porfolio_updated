@@ -11,50 +11,60 @@ export function ExperienceSection() {
 
   const experiences = [
     {
-      title: "Ssr Product Owner",
-      company: "Insside",
-      period: "Noviembre 2024 – Actualidad",
+      title: "Cybersecurity Intern (Network & Systems Security)",
+      company: "Aero Contractors of Nigeria",
+      period: "2019 – 2020",
       description: [
-        "Gestión del ciclo completo de vida de productos digitales (de discovery a MVP).",
-        "Trabajo con equipos internos y proveedores externos en el desarrollo de soluciones.",
-        "Análisis, documentación y refinamiento de requerimientos para asegurar entregas alineadas al negocio.",
-        "Participación en la definición estratégica y ejecución de roadmaps para maximizar valor.",
+        "Configured Cisco routers, enterprise networks, and VPNs.",
+        "Assisted in hardening systems against DDoS and external threats.",
+        "Gained real-world exposure to enterprise network security operations.",
       ],
       color: "from-fuchsia-500 to-purple-600",
     },
     {
-      title: "Analista de Producto y Célula de Innovación",
-      company: "Orbith",
-      period: "Mayo 2023 – Octubre 2024",
+      title: "Cybersecurity Analyst",
+      company: "FemTech IT",
+      period: "2020 – 2021",
       description: [
-        "Lideré el desarrollo de nuevos productos digitales para segmentos residenciales e ISPs.",
-        "Coordiné con equipos legales, comerciales y técnicos para asegurar implementaciones integrales.",
-        "Analicé rentabilidad de servicios, definí MVPs y optimicé propuestas de valor.",
-        "Lideré un equipo de 2 desarrolladores en proyectos de innovación y business intelligence, incorporando IA en etapas exploratorias.",
+        "Designed and implemented incident response protocols.",
+        "Deployed and monitored SIEM tools to improve detection visibility.",
+        "Conducted penetration tests and vulnerability assessments.",
+        "Reduced breach detection times significantly.",
       ],
       color: "from-purple-500 to-violet-600",
     },
     {
-      title: "Business Processes Associate Consultant",
-      company: "SAP",
-      period: "Mayo 2022 – Mayo 2023",
+      title: "Cybersecurity Analyst",
+      company: "DOTS ICT Institute of Technology",
+      period: "2021 – 2022",
       description: [
-        "Analicé sistemas de clientes y recomendé mejoras alineadas a buenas prácticas SAP.",
-        "Desarrollé roadmaps para actualizaciones y migraciones.",
-        "Asesoré sobre rendimiento y adopción de procesos.",
+        "Led security assessments and monitored intrusion detection systems.",
+        "Developed and enforced access control and endpoint security policies.",
+        "Delivered security awareness training for staff and students.",
       ],
       color: "from-violet-500 to-indigo-600",
     },
     {
-      title: "Product Owner",
-      company: "SAP",
-      period: "Noviembre 2020 – Mayo 2022",
+      title: "Customer Service & Responsible Gaming Support",
+      company: "William Hill",
+      period: "2022 – 2023",
       description: [
-        "Definí la visión del producto y prioricé el backlog alineado con objetivos estratégicos.",
-        "Diseñé user personas y escenarios de uso, y realicé pruebas de usuario.",
-        "Conduje talleres de capacitación y trabajé con UI Designers para construir interfaces funcionales y atractivas.",
+        "Guided users through responsible gaming and self-exclusion tools.",
+        "Resolved customer issues with empathy and security awareness.",
+        "Ensured compliance with data protection and security practices.",
       ],
       color: "from-indigo-500 to-blue-600",
+    },
+    {
+      title: "MSc Cybersecurity & International Student Ambassador",
+      company: "Edinburgh Napier University",
+      period: "2023 – Present",
+      description: [
+        "Pursuing MSc in Cybersecurity with focus on threat intelligence and cloud security.",
+        "Representing the university at conferences and mentoring newcomers.",
+        "Exploring advanced topics such as AI-driven cyber defence and incident response.",
+      ],
+      color: "from-blue-500 to-cyan-600",
     },
   ]
 
@@ -92,7 +102,7 @@ export function ExperienceSection() {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold tracking-tighter mb-16 text-center"
           >
-            Experiencia <span className="text-purple-500">Profesional</span>
+            Professional <span className="text-purple-500">Experience</span>
           </motion.h2>
 
           <div className="grid md:grid-cols-12 gap-8">
