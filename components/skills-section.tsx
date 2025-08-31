@@ -6,53 +6,55 @@ import { motion, useInView, AnimatePresence } from "framer-motion"
 export function SkillsSection() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
-  const [activeCategory, setActiveCategory] = useState("product")
+  const [activeCategory, setActiveCategory] = useState("blue")
 
   const skillCategories = [
     {
-      id: "product",
-      name: "Producto y UX",
-      color: "from-fuchsia-500 to-purple-500",
+      id: "blue",
+      name: "Blue Team & Detection",
+      color: "from-cyan-500 to-blue-500",
       skills: [
-        { name: "Desarrollo de producto", level: 95 },
-        { name: "Definición de MVPs", level: 90 },
-        { name: "Estrategia y roadmapping", level: 85 },
-        { name: "Research y testing", level: 88 },
-        { name: "Agile (Scrum/Kanban)", level: 92 },
+        { name: "SIEM (Splunk, ELK)", level: 85 },
+        { name: "Log Analysis & Correlation", level: 90 },
+        { name: "Incident Response", level: 80 },
+        { name: "Threat Hunting", level: 88 },
+        { name: "Packet Analysis (Wireshark)", level: 85 },
       ],
     },
     {
-      id: "leadership",
-      name: "Comunicación y Liderazgo",
-      color: "from-purple-500 to-violet-500",
+      id: "red",
+      name: "Red Team & Offensive Security",
+      color: "from-red-500 to-pink-500",
       skills: [
-        { name: "Gestión de stakeholders", level: 88 },
-        { name: "Liderazgo de equipos", level: 85 },
-        { name: "Facilitación de workshops", level: 90 },
-        { name: "Comunicación efectiva", level: 92 },
+        { name: "Penetration Testing", level: 80 },
+        { name: "Metasploit / Armitage", level: 78 },
+        { name: "Web App Security (Burp Suite)", level: 82 },
+        { name: "Password Attacks (Hashcat, Hydra)", level: 85 },
+        { name: "Active Directory Attacks", level: 75 },
       ],
     },
     {
-      id: "ai",
-      name: "IA e Innovación",
-      color: "from-violet-500 to-indigo-500",
+      id: "cloud",
+      name: "Cloud & Infrastructure Security",
+      color: "from-purple-500 to-indigo-500",
       skills: [
-        { name: "Ingeniería de prompts", level: 85 },
-        { name: "Ideación de features con IA", level: 90 },
-        { name: "Automatización de diseño", level: 80 },
-        { name: "ChatGPT y herramientas IA", level: 95 },
+        { name: "Azure Security", level: 70 },
+        { name: "AWS IAM & Monitoring", level: 65 },
+        { name: "Firewall & IDS/IPS Config", level: 78 },
+        { name: "Vulnerability Management (Qualys, Nessus)", level: 80 },
+        { name: "Virtualisation & Labs (VMware, VirtualBox)", level: 85 },
       ],
     },
     {
-      id: "tech",
-      name: "Tecnología",
-      color: "from-indigo-500 to-blue-500",
+      id: "automation",
+      name: "Coding & Automation",
+      color: "from-green-500 to-emerald-500",
       skills: [
-        { name: "React / Next.js", level: 75 },
-        { name: "JavaScript / TypeScript", level: 70 },
-        { name: "SQL / MongoDB", level: 65 },
-        { name: "Figma / Herramientas de diseño", level: 85 },
-        { name: "AWS / Cloud", level: 60 },
+        { name: "Python (Security Scripting)", level: 82 },
+        { name: "Bash / PowerShell", level: 75 },
+        { name: "Log Parsing & Automation", level: 80 },
+        { name: "Custom Security Tools", level: 78 },
+        { name: "Git & Version Control", level: 70 },
       ],
     },
   ]
@@ -78,7 +80,7 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="min-h-screen flex items-center py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(168,85,247,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.15),transparent_70%)]" />
 
       <div ref={ref} className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -91,7 +93,7 @@ export function SkillsSection() {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold tracking-tighter mb-16 text-center"
           >
-            Mis <span className="text-indigo-500">Habilidades</span>
+            My <span className="text-cyan-400">Cyber Skills</span>
           </motion.h2>
 
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-16">
@@ -183,25 +185,25 @@ export function SkillsSection() {
                                       <stop
                                         offset="0%"
                                         stopColor={
-                                          category.id === "product"
-                                            ? "#ec4899"
-                                            : category.id === "leadership"
-                                              ? "#a855f7"
-                                              : category.id === "ai"
+                                          category.id === "blue"
+                                            ? "#06b6d4"
+                                            : category.id === "red"
+                                              ? "#ef4444"
+                                              : category.id === "cloud"
                                                 ? "#8b5cf6"
-                                                : "#6366f1"
+                                                : "#10b981"
                                         }
                                       />
                                       <stop
                                         offset="100%"
                                         stopColor={
-                                          category.id === "product"
-                                            ? "#a855f7"
-                                            : category.id === "leadership"
-                                              ? "#8b5cf6"
-                                              : category.id === "ai"
+                                          category.id === "blue"
+                                            ? "#3b82f6"
+                                            : category.id === "red"
+                                              ? "#ec4899"
+                                              : category.id === "cloud"
                                                 ? "#6366f1"
-                                                : "#3b82f6"
+                                                : "#34d399"
                                         }
                                       />
                                     </linearGradient>
