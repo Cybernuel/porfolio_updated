@@ -8,40 +8,77 @@ export function ExperiencePanel() {
 
   const experiences = [
     {
-      title: "Cybersecurity Analyst / SOC Engineer",
-      company: "DOTS ICT Institute of Technology",
-      period: "2024 – Present",
+      title: "Customer Service Representative",
+      company: "William Hill, Edinburgh, UK",
+      period: "Aug 2024 – Present",
       description: [
-        "Designed incident response protocols and deployed SIEM tools.",
-        "Led penetration tests and reduced breach detection times.",
-        "Developed Python and Bash scripts to automate log analysis and threat detection.",
-        "Worked on Active Directory hardening and cloud security monitoring.",
+        "Deliver prompt and accurate support across live chat, phone, and email channels.",
+        "Contributed to a 20% rise in positive feedback ratings by ensuring seamless customer experiences.",
+        "Collaborated with internal teams to resolve complex cases and reduce repeat contacts by 25%.",
+        "Promoted responsible gambling practices by guiding customers through safety tools.",
       ],
       color: "from-cyan-500 to-blue-500",
     },
     {
-      title: "Security Analyst",
-      company: "FemTech IT",
-      period: "2023 – 2024",
+      title: "International Student Ambassador",
+      company: "Edinburgh Napier University, UK",
+      period: "Nov 2024 – Present",
       description: [
-        "Performed vulnerability assessments and penetration testing.",
-        "Analyzed logs using Splunk and ELK Stack for threat intelligence.",
-        "Configured network monitoring and intrusion detection systems.",
-        "Supported cloud security operations for Azure environments.",
+        "Acted as liaison between the university and prospective international students.",
+        "Delivered presentations at open days and events, reaching 500+ prospective students.",
+        "Discussed cybersecurity career pathways, boosting tech program interest by 18%.",
+        "Mentored new students, supporting cultural adaptation and academic success.",
       ],
       color: "from-purple-500 to-pink-500",
     },
     {
-      title: "Network Security Intern",
-      company: "Aero Contractors of Nigeria",
-      period: "2022 – 2023",
+      title: "Cybersecurity Analyst Intern",
+      company: "Hacksecure, UK",
+      period: "May 2025 – Jun 2025",
       description: [
-        "Configured enterprise networks, routers, and VPNs.",
-        "Hardened systems against DDoS and common network attacks.",
-        "Gained hands-on experience with Cisco network equipment and firewalls.",
+        "Assisted with vulnerability assessments and penetration testing on client systems.",
+        "Managed Active Directory user accounts and applied security policies.",
+        "Supported incident response by analysing logs and drafting initial reports.",
+        "Configured Snort IDS rules and monitored network traffic in real time.",
       ],
       color: "from-green-500 to-teal-500",
-    }
+    },
+    {
+      title: "Cybersecurity Analyst",
+      company: "DOTS ICT Institute of Technology, Nigeria",
+      period: "Mar 2023 – Jan 2024",
+      description: [
+        "Led penetration tests and red team simulations, reducing risk exposure by 40%.",
+        "Developed custom firewall configurations and integrated Snort-based IDS.",
+        "Designed incident response protocols, cutting breach detection time by 35%.",
+        "Deployed SIEM tools (Splunk & ELK Stack) for real-time monitoring.",
+      ],
+      color: "from-orange-500 to-red-500",
+    },
+    {
+      title: "Cybersecurity Analyst",
+      company: "FemTech Information Technology Ltd, Nigeria",
+      period: "Mar 2021 – Feb 2023",
+      description: [
+        "Performed security audits based on ISO 27001 & NIST frameworks.",
+        "Strengthened AWS and Azure cloud security configurations.",
+        "Developed Python automation scripts for log analysis, reducing IR time by 50%.",
+        "Implemented MFA and encryption protocols for enhanced data protection.",
+      ],
+      color: "from-pink-500 to-rose-500",
+    },
+    {
+      title: "Network Security Intern",
+      company: "Aero Contractors of Nigeria, Lagos",
+      period: "Feb 2017 – Oct 2019",
+      description: [
+        "Configured and maintained Cisco routers, Fortinet firewalls, and VPNs.",
+        "Applied DDoS mitigation techniques, improving uptime by 20%.",
+        "Optimised Wireshark use for real-time packet analysis and anomaly detection.",
+        "Assisted in secure network architecture implementation to reduce intrusions.",
+      ],
+      color: "from-yellow-500 to-amber-500",
+    },
   ]
 
   return (
@@ -75,10 +112,8 @@ export function ExperiencePanel() {
             transition={{ duration: 0.3 }}
             className="terminal-text font-mono text-sm"
           >
-            <div className={`flex items-center mb-4`}>
-              <div
-                className={`w-2 h-2 rounded-full bg-gradient-to-r ${experiences[activeExperience].color} mr-2`}
-              ></div>
+            <div className="flex items-center mb-4">
+              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${experiences[activeExperience].color} mr-2`}></div>
               <span className="text-white">{experiences[activeExperience].title}</span>
             </div>
 
@@ -88,10 +123,8 @@ export function ExperiencePanel() {
                   <div className="text-white">{experiences[activeExperience].company}</div>
                   <div className="text-xs">{experiences[activeExperience].period}</div>
                 </div>
-                <div
-                  className={`text-xs px-2 py-1 rounded bg-gradient-to-r ${experiences[activeExperience].color} text-white`}
-                >
-                  {activeExperience === 0 ? "CURRENT" : "PAST"}
+                <div className={`text-xs px-2 py-1 rounded bg-gradient-to-r ${experiences[activeExperience].color} text-white`}>
+                  {activeExperience <= 2 ? "CURRENT" : "PAST"}
                 </div>
               </div>
 
@@ -110,66 +143,10 @@ export function ExperiencePanel() {
                 ))}
               </div>
             </div>
-
-            <div className="text-xs text-gray-400 bg-gray-800/30 p-3 rounded border border-gray-700">
-              <div className="mb-2">Additional Information:</div>
-
-              {activeExperience === 0 && (
-                <div className="space-y-2">
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Automating log analysis and SOC workflows with Python/Bash.</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Active Directory hardening and Azure cloud monitoring.</span>
-                  </div>
-                </div>
-              )}
-
-              {activeExperience === 1 && (
-                <div className="space-y-2">
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Conducted vulnerability assessments and penetration tests.</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Analyzed network and security logs using Splunk and ELK Stack.</span>
-                  </div>
-                </div>
-              )}
-
-              {activeExperience === 2 && (
-                <div className="space-y-2">
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Configured enterprise networks, VPNs, and Cisco routers.</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Hardened systems against DDoS and common network attacks.</span>
-                  </div>
-                </div>
-              )}
-
-              {activeExperience === 3 && (
-                <div className="space-y-2">
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Educated users on cybersecurity best practices and self-exclusion tools.</span>
-                  </div>
-                  <div className="flex items-start">
-                    <span className="text-cyan-400 mr-2">&gt;</span>
-                    <span>Delivered cybersecurity awareness presentations at university and for customers.</span>
-                  </div>
-                </div>
-              )}
-            </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Terminal lines decoration */}
+        {/* Decorative terminal lines */}
         <div className="absolute top-0 left-0 h-full w-full pointer-events-none overflow-hidden opacity-5">
           {Array.from({ length: 20 }).map((_, i) => (
             <div
