@@ -9,8 +9,22 @@ interface CursorProps {
 
 export function Cursor({ mousePosition }: CursorProps) {
   const [cursorVariant, setCursorVariant] = useState("default")
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
     const handleMouseDown = () => setCursorVariant("click")
     const handleMouseUp = () => setCursorVariant("default")
 
@@ -46,7 +60,9 @@ export function Cursor({ mousePosition }: CursorProps) {
         element.removeEventListener("mouseleave", handleMouseLeave)
       })
     }
-  }, [])
+  }, [isMobile])
+
+  if (isMobile) return null
 
   const variants = {
     default: {
@@ -81,13 +97,13 @@ export function Cursor({ mousePosition }: CursorProps) {
   return (
     <>
       <motion.div
-        className="cursor-dot fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="cursor-dot fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
         variants={variants}
         animate={cursorVariant}
         transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
       />
       <motion.div
-        className="cursor-dot-outline fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] hidden md:block"
+        className="cursor-dot-outline fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
