@@ -137,7 +137,7 @@ export function ExperiencePanel() {
                     transition={{ delay: 0.3 + i * 0.1 }}
                     className="flex items-start"
                   >
-                    <span className="text-green-400 mr-2">$</span>
+                    <span className="text-green-400 mr-2">-</span>
                     <span>{desc}</span>
                   </motion.div>
                 ))}
