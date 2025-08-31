@@ -10,6 +10,18 @@ interface RetroMouseProps {
 export function RetroMouse({ position }: RetroMouseProps) {
   const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([])
   const [isActive, setIsActive] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   useEffect(() => {
     if (position.x === 0 && position.y === 0) return
@@ -30,16 +42,16 @@ export function RetroMouse({ position }: RetroMouseProps) {
     }
   }, [position, isActive])
 
-  // Hide real cursor
   useEffect(() => {
-    document.body.style.cursor = "none"
-    return () => {
-      document.body.style.cursor = "auto"
+    if (!isMobile) {
+      document.body.style.cursor = "none"
+      return () => {
+        document.body.style.cursor = "auto"
+      }
     }
-  }, [])
+  }, [isMobile])
 
-  // Return if mouse hasn't moved yet
-  if (!isActive) return null
+  if (isMobile || !isActive) return null
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999]">
