@@ -18,37 +18,47 @@ interface WindowProps {
 
 export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }: WindowProps) {
   const [isMinimized, setIsMinimized] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [position, setPosition] = useState({ x: 50, y: 20 })
   const nodeRef = useRef(null)
 
-  // Helper to parse width string like "min(650px, 90vw)" into px number
-  const getNumericWidth = (id: string): number => {
-    switch (id) {
-      case "profile": return 650
-      case "skills": return 700
-      case "experience": return 700
-      case "projects": return 700
-      case "contact": return 650
-      case "terminal": return 600
-      default: return 500
-    }
-  }
-
-  // Set initial position based on window ID (now aligned to the right side)
+  // Set initial spawn position on the LEFT side
   useEffect(() => {
-    const screenWidth = window.innerWidth
-    const baseY = { profile: 20, skills: 40, experience: 60, projects: 80, contact: 100, terminal: 120 } as Record<string, number>
-    const windowWidth = getNumericWidth(id)
-    const offsetX = screenWidth - windowWidth - 50 // 50px padding from right edge
-
-    setPosition({ x: offsetX, y: baseY[id] ?? 0 })
+    switch (id) {
+      case "profile":
+        setPosition({ x: 50, y: 20 })
+        break
+      case "skills":
+        setPosition({ x: 70, y: 60 })
+        break
+      case "experience":
+        setPosition({ x: 90, y: 100 })
+        break
+      case "projects":
+        setPosition({ x: 110, y: 140 })
+        break
+      case "contact":
+        setPosition({ x: 130, y: 180 })
+        break
+      case "terminal":
+        setPosition({ x: 150, y: 220 })
+        break
+      default:
+        setPosition({ x: 50, y: 50 })
+    }
   }, [id])
 
   if (!isOpen) return null
   if (isMinimized) return null
 
   return (
-    <Draggable nodeRef={nodeRef} handle=".window-header" defaultPosition={position} onStart={onFocus} bounds="parent">
+    <Draggable
+      nodeRef={nodeRef}
+      handle=".window-header"
+      position={position} // controlled position
+      onStop={(_, data) => setPosition({ x: data.x, y: data.y })} // update after drag
+      onStart={onFocus}
+      bounds="parent"
+    >
       <motion.div
         ref={nodeRef}
         initial={{ opacity: 0, scale: 0.9 }}
@@ -66,7 +76,10 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
       >
         <div className="window-header flex items-center justify-between bg-gradient-to-r from-gray-700 to-gray-800 px-2 py-1 cursor-move">
           <div className="flex items-center gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer" onClick={onClose}></div>
+            <div
+              className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 cursor-pointer"
+              onClick={onClose}
+            ></div>
             <div
               className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 cursor-pointer"
               onClick={() => setIsMinimized(true)}
@@ -74,7 +87,7 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
             <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 cursor-pointer"></div>
           </div>
           <div className="text-xs font-mono text-gray-300 mx-auto">{title}</div>
-          <div className="w-4"></div> {/* Spacer for alignment */}
+          <div className="w-4"></div> {/* Spacer */}
         </div>
 
         <motion.div
@@ -91,7 +104,7 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   )
 }
 
-// Helper function to set appropriate window dimensions based on content
+// Helper functions
 function getWindowWidth(id: string): string {
   switch (id) {
     case "profile":
