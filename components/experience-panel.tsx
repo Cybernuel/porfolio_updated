@@ -41,18 +41,7 @@ export function ExperiencePanel() {
         "Gained hands-on experience with Cisco network equipment and firewalls.",
       ],
       color: "from-green-500 to-teal-500",
-    },
-    {
-      title: "Customer Support & Security Awareness",
-      company: "William Hill",
-      period: "2021 – 2022",
-      description: [
-        "Guided users on secure practices and self-exclusion tools.",
-        "Provided technical support with a focus on cybersecurity best practices.",
-        "Delivered cybersecurity awareness presentations to staff and customers.",
-      ],
-      color: "from-orange-500 to-yellow-500",
-    },
+    }
   ]
 
   return (
