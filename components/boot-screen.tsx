@@ -83,7 +83,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
           className="text-4xl md:text-6xl font-bold mb-4 glitch-text"
         >
-          <span className="text-green-400">Emmanuel Damilare</span>
+          <span className="text-green-400">Emmanuel Adegbite</span>
         </motion.h1>
         <motion.h2
           initial={{ opacity: 0 }}
