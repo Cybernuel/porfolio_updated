@@ -21,29 +21,28 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const nodeRef = useRef(null)
 
-  // Set initial position based on window ID to arrange them nicely
   useEffect(() => {
     switch (id) {
       case "profile":
-        setPosition({ x: 50, y: 20 })
+        setPosition({ x: 20, y: 20 })
         break
       case "skills":
-        setPosition({ x: 100, y: 40 })
+        setPosition({ x: 40, y: 40 })
         break
       case "experience":
-        setPosition({ x: 150, y: 60 })
+        setPosition({ x: 60, y: 60 })
         break
       case "projects":
-        setPosition({ x: 200, y: 80 })
+        setPosition({ x: 80, y: 80 })
         break
       case "contact":
-        setPosition({ x: 250, y: 100 })
+        setPosition({ x: 100, y: 100 })
         break
       case "terminal":
-        setPosition({ x: 300, y: 120 })
+        setPosition({ x: 120, y: 120 })
         break
       default:
-        setPosition({ x: 0, y: 0 })
+        setPosition({ x: 20, y: 20 })
     }
   }, [id])
 
@@ -94,23 +93,22 @@ export function Window({ id, title, children, isOpen, zIndex, onClose, onFocus }
   )
 }
 
-// Helper function to set appropriate window dimensions based on content
 function getWindowWidth(id: string): string {
   switch (id) {
     case "profile":
-      return "min(650px, 90vw)"
+      return "min(500px, 70vw)"
     case "skills":
-      return "min(700px, 90vw)"
+      return "min(550px, 70vw)"
     case "experience":
-      return "min(700px, 90vw)"
+      return "min(550px, 70vw)"
     case "projects":
-      return "min(700px, 90vw)"
+      return "min(550px, 70vw)"
     case "contact":
-      return "min(650px, 90vw)"
+      return "min(400px, 70vw)"
     case "terminal":
-      return "min(600px, 90vw)"
+      return "min(480px, 70vw)"
     default:
-      return "500px"
+      return "400px"
   }
 }
 
@@ -125,7 +123,7 @@ function getWindowHeight(id: string): string {
     case "projects":
       return "min(500px, 80vh)"
     case "contact":
-      return "min(500px, 80vh)"
+      return "min(400px, 80vh)"
     case "terminal":
       return "min(400px, 80vh)"
     default:
