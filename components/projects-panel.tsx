@@ -141,9 +141,33 @@ export function ProjectsPanel() {
       description:
         "A PowerShell-based insider threat simulation that mimics malicious insider behaviour such as running hidden scripts, staging files, and reaching out to dummy servers. Built for detection engineering practice and Blue Team learning.",
       technologies: ["PowerShell", "Detection Engineering", "Blue Team", "Threat Hunting"],
-      image: "/insider_threat.png?height=400&width=600",
+      image: "/insider_threat.jpg?height=400&width=600",
       color: "from-red-500 to-yellow-500",
     },
+    {
+      title: "Web App Security (SQLi & XSS Lab)",
+      description:
+        "An intentionally vulnerable web application (OWASP Juice Shop) for demonstrating and testing SQL Injection (SQLi) and Cross-Site Scripting (XSS) attacks, alongside secure coding practices.",
+      technologies: ["OWASP", "Juice Shop", "SQL Injection", "XSS", "Web Security"],
+      image: "/juiceshop.jpg?height=400&width=600",
+      color: "from-pink-500 to-red-500",
+    },
+    {
+      title: "DNS Tunneling Lab",
+      description:
+        "A homelab project demonstrating DNS tunneling with dnscat2. Configured a Kali Linux server and a Windows client to simulate covert C2 communication and data exfiltration over port 53.",
+      technologies: ["Kali Linux", "Windows Server", "dnscat2", "DNS", "Blue Team"],
+      image: "/dns_tunneling.jpg?height=400&width=600",
+      color: "from-indigo-500 to-blue-500",
+    },
+    {
+  title: "Splunk Log Hunting",
+  description:
+    "Ingested JSON logs into Splunk and built SPL queries to hunt for suspicious activity like encoded PowerShell, malicious downloads, Office spawning PowerShell, and rare external IPs. Created dashboards to visualize anomalies and detections.",
+  technologies: ["Splunk", "SPL", "Threat Hunting", "Blue Team"],
+  image: "/splunk_hunting.jpg?height=400&width=600",
+  color: "from-indigo-500 to-blue-500",
+},
 
   ]
 
