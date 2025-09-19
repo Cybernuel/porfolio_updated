@@ -136,6 +136,15 @@ export function ProjectsPanel() {
       image: "/otp_simulation.png?height=400&width=600",
       color: "from-purple-400 to-pink-400",
     },
+    {
+      title: "Insider Threat Simulation",
+      description:
+        "A PowerShell-based insider threat simulation that mimics malicious insider behaviour such as running hidden scripts, staging files, and reaching out to dummy servers. Built for detection engineering practice and Blue Team learning.",
+      technologies: ["PowerShell", "Detection Engineering", "Blue Team", "Threat Hunting"],
+      image: "/insider_threat.png?height=400&width=600",
+      color: "from-red-500 to-yellow-500",
+    },
+
   ]
 
   return (
