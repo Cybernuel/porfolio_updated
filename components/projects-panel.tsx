@@ -169,6 +169,17 @@ export function ProjectsPanel() {
   color: "from-indigo-500 to-blue-500",
 },
 
+{
+  title: "Plex Public Domain Streams",
+  description:
+    "A lightweight setup to integrate public-domain movies from the Internet Archive into Plex Media Server using .strm files. Instead of downloading large files, .strm files point Plex directly to streaming URLs, saving space while expanding your library.",
+  technologies: ["Plex", "Internet Archive", "Streaming", "Media Server"],
+  image: "/plex_public_domain.jpg?height=400&width=600",
+  color: "from-yellow-500 to-orange-500",
+},
+
+
+
   ]
 
   return (
