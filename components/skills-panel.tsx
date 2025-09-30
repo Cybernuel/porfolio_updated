@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -12,6 +13,7 @@ export function SkillsPanel() {
     { id: "Defensive Security", label: "Defense", color: "from-cyan-500 to-blue-500" },
     { id: "Cloud & Identity Security", label: "Cloud & Identity", color: "from-green-500 to-blue-500" },
     { id: "Automation & Threat Intelligence", label: "Automation & Threat Intelligence", color: "from-orange-500 to-pink-500" },
+    { id: "IT Operations & Professional Skills", label: "IT Ops & Professional", color: "from-yellow-500 to-red-500" },
   ]
 
   const proficiencyLevels = {
@@ -81,6 +83,16 @@ export function SkillsPanel() {
         level: "familiar",
         context: "Implemented basic DDoS prevention and uptime resilience strategies.",
       },
+      {
+        name: "Secure Network Configuration",
+        level: "proficient",
+        context: "Configured VPNs and network policies (Cisco Routers) to strengthen enterprise security.",
+      },
+      {
+        name: "Troubleshooting & Diagnostics",
+        level: "advanced",
+        context: "Diagnosed and resolved hardware/software issues across enterprise environments.",
+      },
     ],
     "Cloud & Identity Security": [
       {
@@ -102,6 +114,16 @@ export function SkillsPanel() {
         name: "Compliance & Governance",
         level: "familiar",
         context: "Applied ISO 27001 and NIST guidelines for audits and risk management.",
+      },
+      {
+        name: "SCCM & Intune MDM",
+        level: "proficient",
+        context: "Packaged and deployed apps, managed endpoints, and enforced device compliance with Intune/Azure MDM.",
+      },
+      {
+        name: "Virtualisation (VMware & Citrix)",
+        level: "advanced",
+        context: "Deployed and managed VMware Esxi/vCenter, and Citrix XenApp/Desktop environments.",
       },
     ],
     "Automation & Threat Intelligence": [
@@ -125,14 +147,62 @@ export function SkillsPanel() {
         level: "familiar",
         context: "Integrated automation scripts into SOC pipelines for alert triage and reporting.",
       },
+      {
+        name: "Batch & PowerShell Scripting",
+        level: "proficient",
+        context: "Automated system administration and security workflows with scripting.",
+      },
+    ],
+    "IT Operations & Professional Skills": [
+      {
+        name: "ITIL Framework",
+        level: "advanced",
+        context: "Applied ITIL practices for incident, problem, and change management in IT service delivery.",
+      },
+      {
+        name: "Operating Systems Support",
+        level: "advanced",
+        context: "Provided desktop & mobile support across Windows, Linux, macOS, iOS, and Android platforms.",
+      },
+      {
+        name: "Microsoft Server & Exchange",
+        level: "proficient",
+        context: "Managed Windows Server (2003–2012 R2), SQL, and Exchange Server 2016 environments.",
+      },
+      {
+        name: "Customer Service & CRM",
+        level: "expert",
+        context: "Delivered technical support via phone/chat/email using CRM platforms with excellent customer satisfaction.",
+      },
+      {
+        name: "Service Desk & Ticketing Tools",
+        level: "advanced",
+        context: "Handled incidents with ServiceNow, Remedy, and Cherwell tools, ensuring SLA compliance.",
+      },
+      {
+        name: "Team Collaboration & Training",
+        level: "proficient",
+        context: "Led team sessions, documented processes, and trained colleagues on technical workflows.",
+      },
     ],
   }
 
   const additionalSkills = {
     Offense: ["Nmap", "Burp Suite", "Metasploit", "Hashcat", "Wireshark"],
     "Defensive Security": ["Splunk", "ELK Stack", "Snort", "AlienVault", "VirusTotal", "EDR Tools"],
-    "Cloud & Identity Security": ["Microsoft Azure", "Azure AD", "MFA", "VPN", "Data Encryption", "Security Auditing"],
+    "Cloud & Identity Security": ["Microsoft Azure", "Azure AD", "EntraID", "MFA", "VPN", "Data Encryption", "Security Auditing"],
     "Automation & Threat Intelligence": ["Python", "YARA", "AnyRun", "FLARE VM", "TryHackMe Labs", "Threat Intel Feeds"],
+    "IT Operations & Professional Skills": [
+      "MS Office Suite",
+      "VMware",
+      "Citrix",
+      "Browsers (IE, Edge, Chrome, Safari, Opera, Firefox)",
+      "Outlook",
+      "Android/iOS/OSX",
+      "Conflict Resolution",
+      "Active Listening",
+      "Technical Documentation",
+    ],
   }
 
   return (
@@ -231,3 +301,4 @@ export function SkillsPanel() {
     </div>
   )
 }
+
